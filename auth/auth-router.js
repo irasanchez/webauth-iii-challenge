@@ -22,8 +22,14 @@ router.post("/register", (req, res) => {
 function makeTokenFromUser() {
   const payload = {
     // create a JWT with the user id as the subject
-    subject: user.id
+    subject: user.id,
+    username: user.username
   };
+  const options = {
+    expiresIn: "15m"
+  };
+  const token = jwt.sign(payload, "this is the secret", options);
+  return token;
 }
 
 // POST /api/login
