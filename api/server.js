@@ -4,8 +4,8 @@ const helmet = require("helmet");
 const cors = require("cors");
 
 //router imports
-const authRouter = require("../auth/auth-router.js");
-const usersRouter = require("../users/users-router.js");
+const authRouter = require("../auth/auth-router");
+const usersRouter = require("../users/users-model");
 
 //server is made
 const server = express();
@@ -18,5 +18,10 @@ server.use(cors());
 //routers used
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
+
+//test
+server.get("/", (req, res) => {
+  res.send("It's alive!");
+});
 
 module.exports = server;
