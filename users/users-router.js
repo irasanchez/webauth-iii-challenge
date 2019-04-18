@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+
 const Users = require("./users-model");
 const restricted = require("../auth/restricted-middleware");
 
@@ -15,3 +14,5 @@ router.get("/", restricted, (req, res) => {
     })
     .catch(error => res.send(error));
 });
+
+module.exports = router;
